@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %} 
+
+{% block title %}Itineraires List{% endblock title%}
+
+{% block content %}
+
+    <div class="row pb-3">
+        <h1>Itineraires</h1>
+    </div>
+
+    <div class="clearfix">
+        <div class="float-right pb-3">
+            <form action="{% url 'itineraires:itineraires' %}" method="post" class="form">
+                {% csrf_token %}
+                {% buttons %}
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+
+
+    {% for itineraire in itineraires %}
+        {{itineraire.titre}}
+    {% endfor %}
+                
+
+
+
+{% endblock content %}

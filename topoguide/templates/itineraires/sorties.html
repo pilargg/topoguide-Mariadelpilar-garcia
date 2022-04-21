@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %} 
+
+{% block title %}Sorties List{% endblock title%}
+
+{% block content %}
+
+    <div class="row pb-3">
+        <h1>Sorties</h1>
+    </div>
+
+    <div class="clearfix">
+        <div class="float-right pb-3">
+            <form action="{% url 'itineraires:sorties' %}" method="post" class="form">
+                {% csrf_token %}
+                {% buttons %}
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+
+
+    {% for sortie in sorties %}
+        {{sortie.id}}
+    {% endfor %}
+                
+
+
+
+{% endblock content %}
