@@ -11,7 +11,8 @@
 
     <div class="clearfix">
         <div class="float-right pb-3">
-            <form action="{% url 'itineraires:sorties' %}" method="post" class="form">
+            <form action="{% url 'itineraires:sorties' itineraire.id %}" method="post" class="form">
+            {% comment %} <select name="itineraire_id"> {% endcomment %}
                 {% csrf_token %}
                 {% buttons %}
                   <button type="submit" class="btn btn-primary">Submit</button>

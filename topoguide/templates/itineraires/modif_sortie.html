@@ -6,17 +6,14 @@
 {% block content %}
 
 
-{% comment %} Creation de sortie {% endcomment %}
-<form action="{% url 'itineraires:nouvelle_sortie' %}" method="post" class="form">
+{% comment %} Modification de sortie {% endcomment %}
+<form action="{% url 'itineraires:modif_sortie' form.instance.id %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-      <button type="submit" class="btn btn-primary">Add</button>
+      <button type="submit" class="btn btn-primary">Update</button>
       <a href="{% url 'itineraires:itineraires' %}" class="btn btn-primary">Cancel</a>
     {% endbuttons %}
 </form>
 
-
 {% endblock content %}
-
-
