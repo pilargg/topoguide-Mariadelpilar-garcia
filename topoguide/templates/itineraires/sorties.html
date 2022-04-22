@@ -10,12 +10,15 @@
     </div>
 
 
+
+
     {% for sortie in sorties %}
         {{sortie.id}}
         <td><a href="{% url 'itineraires:sortie' sortie.id %}">{{ sortie.id }}</a></td>
     {% endfor %}
                 
 
+    
 
 
 {% endblock content %}

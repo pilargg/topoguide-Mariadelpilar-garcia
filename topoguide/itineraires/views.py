@@ -14,7 +14,7 @@ def itineraires(request):
 
 @login_required() 
 def sorties(request, itineraire_id):
-    sorties = get_list_or_404(Sortie, pk=itineraire_id)
+    sorties = get_list_or_404(Sortie, itineraire=itineraire_id)
     return render(request, 'itineraires/sorties.html', {'sorties': sorties})
 
 
