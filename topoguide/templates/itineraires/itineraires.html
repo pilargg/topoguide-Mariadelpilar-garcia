@@ -13,9 +13,13 @@
         <div class="float-right pb-3">
             <form action="{% url 'itineraires:itineraires' %}" method="post" class="form">
                 {% csrf_token %}
-                {% buttons %}
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                {% endbuttons %}
+
+
+                <div class="mb-3">
+                    {{ form }}
+                </div>
+
+
             </form>
         </div>
     </div>
@@ -23,6 +27,8 @@
 
     {% for itineraire in itineraires %}
         {{itineraire.titre}}
+        <td><a href="{% url 'itineraires:sorties' itineraire.id %}">{{ itineraire.id }}</a></td>
+        
     {% endfor %}
                 
 

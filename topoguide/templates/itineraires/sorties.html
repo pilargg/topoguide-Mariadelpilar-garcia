@@ -9,21 +9,10 @@
         <h1>Sorties</h1>
     </div>
 
-    <div class="clearfix">
-        <div class="float-right pb-3">
-            <form action="{% url 'itineraires:sorties' itineraire.id %}" method="post" class="form">
-            {% comment %} <select name="itineraire_id"> {% endcomment %}
-                {% csrf_token %}
-                {% buttons %}
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                {% endbuttons %}
-            </form>
-        </div>
-    </div>
-
 
     {% for sortie in sorties %}
         {{sortie.id}}
+        <td><a href="{% url 'itineraires:sortie' sortie.id %}">{{ sortie.id }}</a></td>
     {% endfor %}
                 
 
