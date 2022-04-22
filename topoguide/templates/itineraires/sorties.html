@@ -13,11 +13,13 @@
 
 
     {% for sortie in sorties %}
-        {{sortie.id}}
-        <td><a href="{% url 'itineraires:sortie' sortie.id %}">{{ sortie.id }}</a></td>
+        <td><a href="{% url 'itineraires:sortie' sortie.id %}"><h>Sortie </h>{{ sortie.id }}</a></td>
+        <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}"><h>Modifier la Sortie </h>{{ sortie.id }}</a></td>
     {% endfor %}
                 
-
+<div class="row pt-3">
+    <a class="btn btn-primary" href="{% url 'itineraires:nouvelle_sortie' %}">Créer nouvelle Sortie</a>
+</div>
     
 
 
