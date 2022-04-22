@@ -5,22 +5,58 @@
 
 {% block content %}
 
+{% comment %} Titre {% endcomment %}
     <div class="row pb-3">
         <h1>Sorties</h1>
     </div>
 
+{% comment %} Table de sorties avec détails {% endcomment %}
+    <div class="row">
+        {% if sorties %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Sorties</th>
+                    <th>utilisateur</th>
+                    <th>date</th>
+                    <th>duree</th> 
+                    <th>Nb Personnes</th>
+                    <th>Experience</th>
+                    <th>Meteo</th>
+                    <th>Difficulte</th>
+                    <th>Modification</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sortie in sorties %}
+                    <tr>
+                        <td><a href="{% url 'itineraires:sortie' sortie.id %}"><h>Sortie </h>{{ sortie.id }}</a></td>
+                        <td>{{ sortie.utilisateur}}</td>
+                        <td>{{ sortie.date}}</td>
+                        <td>{{ sortie.duree}}</td>
+                        <td>{{ sortie.nombrePersonnes}}</td>
+                        <td>{{ sortie.experience}}</td>
+                        <td>{{ sortie.meteo}}</td>
+                        <td>{{ sortie.difficulte}}</td>
+                        <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}"><h>Modifier la Sortie </h>{{ sortie.id }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="jumbotron"><i>No sortie available.</i></div>
+        {% endif %}
+        </div>
 
-
-
-    {% for sortie in sorties %}
-        <td><a href="{% url 'itineraires:sortie' sortie.id %}"><h>Sortie </h>{{ sortie.id }}</a></td>
-        <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}"><h>Modifier la Sortie </h>{{ sortie.id }}</a></td>
-    {% endfor %}
                 
+{% comment %} Boutons  {% endcomment %}
 <div class="row pt-3">
     <a class="btn btn-primary" href="{% url 'itineraires:nouvelle_sortie' %}">Créer nouvelle Sortie</a>
 </div>
-    
 
+<div class="row pt-3">
+    <a class="btn btn-primary" href="{% url 'logout' %}">Déconnexion</a>
+</div>
+    
 
 {% endblock content %}

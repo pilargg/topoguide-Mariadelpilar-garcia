@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %} 
 
 {% block title %}Sortie Details {{ sortie.id|truncatechars:10 }}' {% endblock title%}
 
 {% block content %}
 
+{% comment %} Titre {% endcomment %}
 <div class="row pb-3">
-    <h2>{{ sortie.id }} <small>by {{ sortie.utilisateur }}</small></h2>
+    <h2>Sortie {{ sortie.id }} <small>by {{ sortie.utilisateur }}</small></h2>
 </div>
 
+
+{% comment %} Table de détails de la sortie{% endcomment %}
 <div class="row">
     <table class="table table-striped">
         <thead>
@@ -21,7 +25,6 @@
         </tr>
         </thead>
         <tbody>
-        
             <tr>
                 <td>{{ sortie.date }}</td>
                 <td>{{ sortie.duree }}</td>
@@ -30,13 +33,18 @@
                 <td>{{ sortie.meteo }}</td>
                 <td>{{ sortie.difficulte }}</td>
             </tr>
-        
         </tbody>
     </table>
 </div>
 
+
+{% comment %} Boutons  {% endcomment %}
 <div class="row pt-3">
     <a class="btn btn-primary" href="{% url 'itineraires:sorties' sortie.itineraire.id %}">Back to Sorties list</a>
+</div>
+
+<div class="row pt-3">
+    <a class="btn btn-primary" href="{% url 'logout' %}">Déconnexion</a>
 </div>
 
 {% endblock content %}

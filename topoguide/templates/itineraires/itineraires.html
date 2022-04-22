@@ -5,32 +5,56 @@
 
 {% block content %}
 
+{% comment %} Titre {% endcomment %}
     <div class="row pb-3">
         <h1>Itineraires</h1>
     </div>
 
-    <div class="clearfix">
-        <div class="float-right pb-3">
-            <form action="{% url 'itineraires:itineraires' %}" method="post" class="form">
-                {% csrf_token %}
-
-
-                <div class="mb-3">
-                    {{ form }}
-                </div>
-
-
-            </form>
+{% comment %} Table d'itinéraires avec détails {% endcomment %}
+    <div class="row">
+        {% if itineraires %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Itineraires</th>
+                    <th>Point de départ</th>
+                    <th>Description</th>
+                    <th>Alt Depart</th>
+                    <th>Alt Min </th>
+                    <th>Alt Max </th>
+                    <th>Deniv Pos Cum</th>
+                    <th>Deniv Neg Cum</th>
+                    <th>Durée estimée</th>
+                    <th>Difficulté estimée</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for itineraire in itineraires %}
+                    <tr>
+                        <td><a href="{% url 'itineraires:sorties' itineraire.id %}"><h>Itineraire </h>{{ itineraire.id }}</a></td>
+                        <td>{{ itineraire.pointDepart }}</td>
+                        <td>{{ itineraire.description }}</td>
+                        <td>{{ itineraire.altitudeDepart }}</td>
+                        <td>{{ itineraire.altitudeMin }}</td>
+                        <td>{{ itineraire.altitudeMax }}</td>
+                        <td>{{ itineraire.denivPosCum }}</td>
+                        <td>{{ itineraire.denivNegCum }}</td>
+                        <td>{{ itineraire.duree }}</td>
+                        <td>{{ itineraire.difficulte }}</td>                   
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="jumbotron"><i>No itineraire available.</i></div>
+        {% endif %}
         </div>
+
+
+{% comment %} Bouton {% endcomment %}
+    <div class="row pt-3">
+        <a class="btn btn-primary" href="{% url 'logout' %}">Déconnexion</a>
     </div>
-
-
-    {% for itineraire in itineraires %}
-        <td><a href="{% url 'itineraires:sorties' itineraire.id %}"><h>Itineraire </h>{{ itineraire.id }}</a></td>
-        
-    {% endfor %}
-                
-
 
 
 {% endblock content %}
