@@ -19,20 +19,20 @@
         </tr>
         </thead>
         <tbody>
-        {% for sortie in sortie.all %}
+        
             <tr>
                 <td>{{ sortie.date }}</td>
                 <td>{{ sortie.duree }}</td>
                 <td>{{ sortie.meteo }}</td>
                 <td>{{ sortie.difficulte }}</td>
             </tr>
-        {% endfor %}
+        
         </tbody>
     </table>
 </div>
 
 <div class="row pt-3">
-    <a class="btn btn-primary" href="{% url 'itineraires:sortie' sortie.id %}">Back to Sorties list</a>
+    <a class="btn btn-primary" href="{% url 'itineraires:sorties' sortie.itineraire.id %}">Back to Sorties list</a>
 </div>
 
 {% endblock content %}

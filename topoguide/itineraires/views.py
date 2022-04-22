@@ -14,14 +14,14 @@ def itineraires(request):
 
 @login_required() 
 def sorties(request, itineraire_id):
-    sorties = get_object_or_404(Sortie, pk=itineraire_id)
+    sorties = get_list_or_404(Sortie, pk=itineraire_id)
     return render(request, 'itineraires/sorties.html', {'sorties': sorties})
 
 
 @login_required() 
 def sortie(request, sortie_id):
-    sortie_details = get_object_or_404(sortie_details.html, pk=sortie_id)
-    return render(request, 'itineraires/sortie_details.html', {'sortie': sortie})
+    sortie = get_object_or_404(Sortie, pk=sortie_id)
+    return render(request, 'itineraires/sortie.html', {'sortie': sortie})
 
 @login_required() 
 def nouvelle_sortie(request):
