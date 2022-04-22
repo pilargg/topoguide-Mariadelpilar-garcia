@@ -5,7 +5,7 @@ from django.http import Http404
 from .models import Itineraire, Sortie
 from .forms import SortieForm
 
-# Create your views here.
+
 
 @login_required() 
 def itineraires(request):

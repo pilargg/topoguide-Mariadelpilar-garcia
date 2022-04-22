@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 from django.conf import settings
 
-# Create your models here.
+
 
 class Itineraire(models.Model):
     titre = models.CharField(max_length=200)
